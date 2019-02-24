@@ -6,12 +6,15 @@
 <mapper namespace="com.tpwls.mapper.boardMapper">
 
 	<select id="readAllBoard" resultType="BoardVO">
-		select * from tbl_board
+		select
+		bno,title,content,writer,DATE_FORMAT(regdate,'%Y-%m-%d %H:%i') as regdate,viewcnt
+		from tbl_board order by regdate desc
 	</select>
 
 	<insert id="insertBoard">
-		insert into tbl_board (title,content,writer,viewcnt) values
-		(#{title},#{content},#{writer},1)
+		insert into tbl_board (title,content,writer,viewcnt,latitude,longitude,address)
+		values
+		(#{title},#{content},#{writer},1,#{latitude},#{longitude},#{address})
 	</insert>
 
 	<select id="readBoard" resultType="BoardVO">
@@ -22,7 +25,8 @@
 
 	<select id="upViewCount" resultType="BoardVO">
 		update tbl_board
-		set viewcnt = viewcnt + 1
+		set viewcnt
+		= viewcnt + 1
 		where bno = #{bno}
 	</select>
 
