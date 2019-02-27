@@ -25,6 +25,11 @@
         actionBar.setDisplayHomeAsUpEnabled(true);  // 액션바 뒤로가기 버튼 생성
         actionBar.setHomeButtonEnabled(true);   // // 액션바 뒤로가기 버튼 생성
         setTitle("회원 가입");  // 액션바 제목 설정
+        
+<form id='form1' action="image/upload" method="post" enctype="multipart/form-data">
+	<input type="file" name="file">
+	<input type="submit" title="보내기">
+</form>
 
 
 </body>
