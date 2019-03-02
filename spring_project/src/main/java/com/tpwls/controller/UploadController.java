@@ -7,6 +7,7 @@ import java.util.UUID;
 import javax.annotation.Resource;
 
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,13 +22,11 @@ public class UploadController {
 	
 	
 	@RequestMapping(value="/upload",method=RequestMethod.POST)
-	public String uploadForm(MultipartFile file) throws Exception { //FIXME User Name을 매개변수로 받아 구분
+	public String uploadForm(MultipartFile uploadFile,String email) throws Exception { //FIXME User Name을 매개변수로 받아 구분
+		System.out.println("image upload Email : " + email);
 		System.out.println(this.getClass().getName());
-		System.out.println("originalName: "+file.getOriginalFilename());
-		System.out.println("size: "+file.getSize());
-		System.out.println("contentType: "+file.getContentType());
 		
-		String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
+		String savedName = uploadFile(uploadFile.getOriginalFilename(), uploadFile.getBytes());
 		
 		return savedName;
 	}
