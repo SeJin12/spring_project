@@ -13,4 +13,7 @@ public interface UserService {
 	public UserVO checkLogin(String uemail,String upw) throws Exception;
 	
 	public List<UserVO> readAllUser() throws Exception;
+	
+	public void updatePath(UserVO vo) throws Exception;
+	
 }

@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService {
 		return dao.readUser(uemail);
 	}
 
+	@Override
+	public void updatePath(UserVO vo) throws Exception {
+		dao.updatePath(vo);
+	}
+
 }

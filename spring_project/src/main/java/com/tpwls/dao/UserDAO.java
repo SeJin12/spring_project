@@ -13,4 +13,6 @@ public interface UserDAO {
 	public UserVO readUser(String uemail)throws Exception;
 	
 	public UserVO checkLogin(String uemail,String upw)throws Exception;
+	
+	public void updatePath(UserVO vo);
 }

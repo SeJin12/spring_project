@@ -26,5 +26,10 @@
 		select * from tbl_user where
 		uemail = #{uemail} and upw = #{upw}
 	</select>
+	
+	<update id="updatePath">
+	update tbl_user set imagepath = #{imagepath}
+	where uemail = #{uemail}
+	</update>
 
 </mapper>

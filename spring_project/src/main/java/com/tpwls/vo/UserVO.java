@@ -3,6 +3,8 @@ package com.tpwls.vo;
 public class UserVO {
 //	private int unumber; // user number - auto increment value
 	private String uemail, upw, uname, uphone, uregion;
+	private String imagepath;
+	
 
 	public String getUemail() {
 		return uemail;
@@ -42,6 +44,14 @@ public class UserVO {
 
 	public void setUregion(String uregion) {
 		this.uregion = uregion;
+	}
+	
+	public String getImagepath() {
+		return imagepath;
+	}
+
+	public void setImagepath(String imagepath) {
+		this.imagepath = imagepath;
 	}
 
 	@Override

@@ -28,6 +28,7 @@
         
 <form id='form1' action="image/upload" method="post" enctype="multipart/form-data">
 	<input type="file" name="file">
+	<input type="text" name="email">
 	<input type="submit" title="보내기">
 </form>
 
