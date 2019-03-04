@@ -34,6 +34,7 @@ public class ImageController {
 	@Inject
 	private UserService service;
 
+	// 이미지 파일 업로드
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public int uploadForm(MultipartFile uploadFile, String email) throws Exception { // FIXME User Name을 매개변수로 받아 구분
 		System.out.println("image upload Email : " + email);
@@ -47,6 +48,7 @@ public class ImageController {
 		return 200;
 	}
 
+	// 웹에 이미지 출력
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> displayFile(@RequestParam("email") String email) throws Exception {
 		InputStream in = null;
@@ -88,6 +90,7 @@ public class ImageController {
 
 	}
 
+	// User imagePath 업데이트
 	private boolean updatePath(String fileName, String email) {
 		UserVO vo = new UserVO();
 		vo.setUemail(email);
@@ -100,6 +103,7 @@ public class ImageController {
 		return true;
 	}
 
+	// Client에서 받아온 이미지 파일 서버에 생성
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {
 		UUID uid = UUID.randomUUID();
 		String savedName = uid.toString() + "_" + originalName;

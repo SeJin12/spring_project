@@ -20,15 +20,8 @@ public class UserController {
 
 	@Inject
 	private UserService service;
-
-	@RequestMapping(value = "/test.do", method = RequestMethod.GET)
-	public Map<String, String> test() throws Exception {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("1번", "성공");
-		map.put("2번", "실패");
-		return map;
-	}
 	
+	// 회원가입 시 이메일 중복 체크
 	@RequestMapping(value="/checkEmail.do", method=RequestMethod.POST)
 	public UserVO checkEmail(@RequestBody UserVO vo) throws Exception {
 		String uemail = vo.getUemail();
@@ -36,13 +29,14 @@ public class UserController {
 		return service.readUser(uemail);
 	}
 	
+	// 모든 유저의 정보를 읽음
 	@RequestMapping(value = "/read.do", method = RequestMethod.GET)
 	public List<UserVO> readAllUser() throws Exception {
 		printLocation("모든 유저의 정보를 읽음");
 		return service.readAllUser();
 	}
 
-	// uemail, upw, uname, uphone, uregion
+	// 유저 정보 추가  -> uemail, upw, uname, uphone, uregion
 	@RequestMapping(value = "/insert.do", method = RequestMethod.POST)
 	public Map<String, String> insert(@RequestBody UserVO vo) throws Exception {
 
@@ -62,7 +56,7 @@ public class UserController {
 		return map;
 	}
 
-	// 조회 성공/실패시 200 Response, 모바일에서 로그인 시 Json 객체 유무를 확인 후 로그인
+	// 로그인 시 유저의 이메일, 패스워드 확인
 	@RequestMapping(value = "/check.do", method = RequestMethod.POST)
 	public UserVO checkLogin(@RequestBody UserVO vo) throws Exception {
 		String uemail = vo.getUemail();

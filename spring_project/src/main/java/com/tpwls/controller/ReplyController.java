@@ -21,6 +21,7 @@ public class ReplyController {
 	@Inject
 	private ReplyService service;
 
+	// 댓글 추가
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public Map<String, String> insertReply(@RequestBody ReplyVO vo) throws Exception {
 		printLocation("댓글 추가 : " + vo.getBno() + "번의 글");
@@ -35,6 +36,7 @@ public class ReplyController {
 		return map;
 	}
 
+	// 하나의 게시글 읽음
 	@RequestMapping(value = "/read", method = RequestMethod.POST)
 	public List<ReplyVO> readReply(@RequestBody ReplyVO vo) throws Exception {
 		printLocation(vo.getBno() + "번 글의 댓글을 읽는다.");

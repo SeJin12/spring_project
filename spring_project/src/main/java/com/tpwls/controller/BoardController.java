@@ -21,12 +21,14 @@ public class BoardController {
 	@Inject
 	private BoardService service;
 
+	// 모든 게시글을 읽음
 	@RequestMapping(value = "/read.do", method = RequestMethod.GET)
 	public List<BoardVO> readAllBoard() throws Exception {
 		printLocation("모든 게시글을 읽음.");
 		return service.readAllBoard();
 	}
 
+	// 게시글 생성
 	@RequestMapping(value = "/insert.do", method = RequestMethod.POST)
 	public Map<String, String> insertBoard(@RequestBody BoardVO vo) throws Exception {
 		printLocation("게시글 추가 : " + vo.getTitle());
@@ -42,6 +44,7 @@ public class BoardController {
 		return map;
 	}
 
+	// 게시글 하나를 읽는다.
 	@RequestMapping(value = "/readBoard.do", method = RequestMethod.POST)
 	public BoardVO readBoard(@RequestBody BoardVO vo) throws Exception {
 		int bno = vo.getBno();
@@ -49,6 +52,7 @@ public class BoardController {
 		return service.readBoard(bno);
 	}
 
+	// 게시글 조회수 1 증가
 	@RequestMapping(value = "upViewCount.do", method = RequestMethod.POST)
 	public Map<String, String> upViewCount(@RequestBody BoardVO vo) {
 		int bno = vo.getBno();
