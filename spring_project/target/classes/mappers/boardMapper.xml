@@ -14,7 +14,7 @@
 	<insert id="insertBoard">
 		insert into tbl_board (title,content,writer,viewcnt,latitude,longitude,address)
 		values
-		(#{title},#{content},#{writer},1,#{latitude},#{longitude},#{address})
+		(#{title},#{content},#{writer},0,#{latitude},#{longitude},#{address})
 	</insert>
 
 	<select id="readBoard" resultType="BoardVO">
